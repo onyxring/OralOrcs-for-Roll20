@@ -1,5 +1,4 @@
-# Roll20OralOrcs
-The ORAL ORCS framework for Roll20.  
+# The ORAL ORCS framework for Roll20  
 
 ORAL - OnyxRing API Library
 ORCS - OnyxRing Client Script
