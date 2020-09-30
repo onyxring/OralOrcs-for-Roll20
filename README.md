@@ -12,7 +12,7 @@ Working with Repeating Sections is also more intuitive with the framework:
 var totAtkPower = 0;
 pc.repeating.spells.forEach(spell=>{
       	if(spell.isAttack=="on") totAtkPower = totAtkPower + spell.power;
-		if(spell.isExpended=="on") spell.delRow();
+	if(spell.isExpended=="on") spell.delRow();
 });
 ```
 
