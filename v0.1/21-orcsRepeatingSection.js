@@ -1,4 +1,4 @@
-orClientScript.scripts.push(
+orClientScript.scripts.push(`
 class orcsRepeatingSection{
     static create (charObj){
         return new Proxy({char:charObj},orcsRepeatingSection.repeatingSectionHandler);
@@ -49,5 +49,5 @@ class orcsRepeatingSection{
             return pc[orcsRepeatingSection.key(obj,prop)]=value;
         }
     };
-}
+}`
 );

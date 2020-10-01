@@ -26,7 +26,7 @@ class orClientScript{
         }
         orClientScript.scripts=[];
         orClientScript.finalScripts=[];
-        //orClientScript.scripts.push(`function log(txt){console.log(txt);}`); //log seems likes it's supported in the core workersheet.  So... not sure what's changed.
+
         orClientScript.scripts.push(`
             class orClientScriptLibrary{ 
                 version=${orFrameworkProperties.version};
