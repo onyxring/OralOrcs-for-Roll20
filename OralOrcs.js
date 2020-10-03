@@ -64,7 +64,7 @@ class orTemplates{
                     var newVal=resolveDefinedTemplates(retval);
                     if(newVal==retval) break;
                     if(count>=10) {
-                        log("Error: template resolution exceed max number of nested calls.");
+                        log("ERROR: template resolution exceed max number of nested calls.");
                         break;
                     }
                     retval=newVal;
@@ -201,7 +201,6 @@ class orRepeatingSection{
                     delRow:()=>{
                         findObjs({ _characterid: charId, _type: 'attribute'}).forEach(i=>{
                                 if(i.get("name").indexOf(rowPrefix)>-1){
-                                log("removing:"+i.get("name"));
                                 i.remove(); 
                             }
                         });
@@ -343,12 +342,16 @@ class orCharacter{
                 id:targetToken 
               })[0];
         }
+        //TODO:this isn't right, see Atlas's cell....
         var token=this.findToken();
         var left = token.get("left") - targetToken.get("left"); 
         var top = token.get("top") - targetToken.get("top");
         var dist = Math.sqrt((left*left)+(top*top));
+        
         var units=getObj("page",Campaign().get("playerpageid")).get("scale_number");
+        
         dist = Math.floor((dist/70)*Number(units)); 
+        
         return dist;
     }
     static attrHandler = {
@@ -573,7 +576,7 @@ class orClientScript{
         }
         orClientScript.scripts=[];
         orClientScript.finalScripts=[];
-        //orClientScript.scripts.push(`function log(txt){console.log(txt);}`); //log seems likes it's supported in the core workersheet.  So... not sure what's changed.
+
         orClientScript.scripts.push(`
             class orClientScriptLibrary{ 
                 version=${orFrameworkProperties.version};
@@ -693,7 +696,7 @@ orClientScript.scripts.push(`
 
 //---------------------------------------
 //-- 21-orcsRepeatingSection.js
-orClientScript.scripts.push(
+orClientScript.scripts.push(`
 class orcsRepeatingSection{
     static create (charObj){
         return new Proxy({char:charObj},orcsRepeatingSection.repeatingSectionHandler);
@@ -744,7 +747,7 @@ class orcsRepeatingSection{
             return pc[orcsRepeatingSection.key(obj,prop)]=value;
         }
     };
-}
+}`
 );
 
 //---------------------------------------
@@ -842,7 +845,7 @@ class orcsTemplates{
                     var newVal=resolveDefinedTemplates(retval);
                     if(newVal==retval) break;
                     if(count>=10) {
-                        log("Error: template resolution exceed max number of nested calls.");
+                        log("ERROR: template resolution exceed max number of nested calls.");
                         break;
                     }
                     retval=newVal;
