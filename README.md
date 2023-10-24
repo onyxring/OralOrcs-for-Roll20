@@ -1,3 +1,5 @@
+_**Note:** This framework is in the process of being revamped._
+
 # The ORAL ORCS framework for Roll20  
 
 ORAL ORCS is a framework for Roll20, comprised of two pieces: the “OnyxRing API Library” (ORAL) and the “OnyxRing Client Script” (ORCS). 
